@@ -1,31 +1,37 @@
 const fs = require("fs");
 const input = fs.readFileSync("./inputs/d2.txt", "utf-8");
 const games = input.split("\n");
+const points = {
+  win: 6,
+  draw: 3,
+  loss: 0,
+};
+
 const rules = {
   X: (opponent) => {
-    let gameResult = 0;
+    let gameResult = points.loss;
     if (opponent === "A") {
-      gameResult = 3;
+      gameResult = points.draw;
     } else if (opponent === "C") {
-      gameResult = 6;
+      gameResult = points.win;
     }
     return gameResult + 1;
   },
   Y: (opponent) => {
-    let gameResult = 0;
+    let gameResult = points.loss;
     if (opponent === "A") {
-      gameResult = 6;
+      gameResult = points.win;
     } else if (opponent === "B") {
-      gameResult = 3;
+      gameResult = points.draw;
     }
     return gameResult + 2;
   },
   Z: (opponent) => {
-    let gameResult = 0;
+    let gameResult = points.loss;
     if (opponent === "B") {
-      gameResult = 6;
+      gameResult = points.win;
     } else if (opponent === "C") {
-      gameResult = 3;
+      gameResult = points.draw;
     }
     return gameResult + 3;
   },
